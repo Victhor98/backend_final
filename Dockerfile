@@ -1,13 +1,13 @@
-# Usa una imagen oficial con Java 21 y Gradle
-FROM gradle:8-jdk21 AS build
+# Usa una imagen oficial con Java 17 y Gradle
+FROM gradle:8-jdk17 AS build
 # Copia los archivos del proyecto
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 # Construye el proyecto, omitiendo tests
 RUN gradle build -x test --no-daemon
 
-# --- LÍNEA CORREGIDA: USA UNA ETIQUETA VÁLIDA ---
-FROM openjdk:21-slim  # <-- Cambia a '21-slim' o '21'
+# Crea la imagen final más ligera
+FROM openjdk:17-jdk-slim  # <-- Cambiado a Java 17
 # Expone el puerto que usa Railway
 EXPOSE $PORT
 # Copia el JAR construido
