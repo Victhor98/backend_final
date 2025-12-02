@@ -7,7 +7,7 @@ WORKDIR /home/gradle/src
 RUN gradle build -x test --no-daemon
 
 # Crea la imagen final más ligera
-FROM openjdk:17-slim
+FROM openjdk:17-slim-bullseye
 # Expone el puerto que usa Railway
 EXPOSE $PORT
 # Copia el JAR construido
