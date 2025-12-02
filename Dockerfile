@@ -6,8 +6,8 @@ WORKDIR /home/gradle/src
 # Construye el proyecto, omitiendo tests
 RUN gradle build -x test --no-daemon
 
-# Crea la imagen final más ligera
-FROM openjdk:21
+# Crea la imagen final más ligera - ¡LÍNEA CORREGIDA!
+FROM openjdk:21-slim
 # Expone el puerto que usa Railway
 EXPOSE $PORT
 # Copia el JAR construido
